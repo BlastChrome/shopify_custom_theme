@@ -1,0 +1,96 @@
+{%- if section.settings.menu != blank -%}
+<header class="header header1">
+  <ul class="header1__collections-nav">
+    
+    <li class="header1__collection-link"><a href="#">Link Top<i class="fas fa-chevron-down"></i></a>
+      <ul class="collection-link__sub-links">
+        <li class="header1__collection-link"><a href="/link">link 1</a></li>
+        <li class="header1__collection-link"><a href="/link">link 2</a></li>
+        <li class="header1__collection-link"><a href="/link">link 3</a></li>
+      </ul>
+    </li> 
+    {%- for link in section.settings.menu.links -%}
+    <li class="header1__collection-link"><a href="{{link.url}}">{{link.title}}</a></li>
+    <!-- <li class="header1__collection-link"><a href="/link">Link</a></li>  -->
+    {%- endfor -%}
+  </ul>  
+  <div class="header1__logo"><a href="{{}}">Company</a></div>
+  <ul class="header1__collections-nav">
+    <li class="header1__collection-link"><a href="/link">Link Top<i class="fas fa-chevron-down"></i></a>
+      <ul class="collection-link__sub-links">
+        <li><a href="#">Link 1</a></li>
+        <li><a href="#">Link 2</a></li>
+        <li><a href="#">Link 3</a></li>
+      </ul>
+    </li>
+    <li class="header1__collection-link"><a href="/link">Link</a></li>
+    <li class="header1__collection-link"><a href="/cart"><i class="fas fa-shopping-cart"></i></a></li>
+    <li class="header1__collection-link"><a href="/cart"><i class="fas fa-user"></i></a></li>
+  </ul>
+</header>
+{%- endif -%}
+
+
+
+
+{% schema %}
+{
+"name": "t:sections.header.name",
+"settings": [
+{
+"type": "image_picker",
+"id": "logo",
+"label": "t:sections.header.settings.logo.label"
+},
+{
+"type": "range",
+"id": "logo_width",
+"min": 50,
+"max": 250,
+"step": 10,
+"default": 100,
+"unit": "t:sections.header.settings.logo_width.unit",
+"label": "t:sections.header.settings.logo_width.label"
+},
+{
+"type": "select",
+"id": "logo_position",
+"options": [
+{
+"value": "middle-left",
+"label": "t:sections.header.settings.logo_position.options__1.label"
+},
+{
+"value": "top-left",
+"label": "t:sections.header.settings.logo_position.options__2.label"
+},
+{
+"value": "top-center",
+"label": "t:sections.header.settings.logo_position.options__3.label"
+}
+],
+"default": "middle-left",
+"label": "t:sections.header.settings.logo_position.label"
+},
+{
+"type": "link_list",
+"id": "menu",
+"default": "main-menu",
+"label": "t:sections.header.settings.menu.label"
+},
+{
+"type": "checkbox",
+"id": "show_line_separator",
+"default": true,
+"label": "t:sections.header.settings.show_line_separator.label"
+},
+{
+"type": "checkbox",
+"id": "enable_sticky_header",
+"default": true,
+"label": "t:sections.header.settings.enable_sticky_header.label",
+"info": "t:sections.header.settings.enable_sticky_header.info"
+}
+]
+}
+{% endschema %}
